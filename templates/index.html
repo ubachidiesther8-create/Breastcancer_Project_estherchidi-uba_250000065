@@ -1,34 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Breast Cancer Prediction</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <title>Breast Cancer Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-<div class="container">
-<h1>Breast Cancer Prediction</h1>
-<div class="form-container">
-<form method="POST">
-<label>Mean Radius:</label>
-<input type="number" step="any" name="radius_mean" required>
-<label>Mean Texture:</label>
-<input type="number" step="any" name="texture_mean" required>
-<label>Mean Perimeter:</label>
-<input type="number" step="any" name="perimeter_mean" required>
-<label>Mean Area:</label>
-<input type="number" step="any" name="area_mean" required>
-<label>Mean Concavity:</label>
-<input type="number" step="any" name="concavity_mean" required>
-<button type="submit">Predict</button>
-</form>
-<div class="result">
-{% if result %}
-<h2>Prediction: {{ result }}</h2>
-<h3>Probability: {{ probability }}</h3>
-{% endif %}
-</div>
-</div>
-</div>
+    <div class="container">
+        <h1>Breast Cancer Prediction</h1>
+        <div class="form-container">
+            <form method="POST">
+                {% for feature in feature_names %}
+                    <label>{{ feature.replace("_"," ").title() }}:</label>
+                    <input type="number" step="any" name="{{ feature }}" required>
+                {% endfor %}
+                <button type="submit">Predict</button>
+            </form>
+
+            <div class="result">
+                {% if result %}
+                    <h2>Prediction: {{ result }}</h2>
+                    <h3>Probability: {{ probability }}</h3>
+                {% endif %}
+                <img src="{{ url_for('static', filename='images/class_imbalance.png') }}" alt="Class Imbalance" width="250">
+                <img src="{{ url_for('static', filename='images/confusion_matrix.png') }}" alt="Confusion Matrix" width="250">
+                <img src="{{ url_for('static', filename='images/roc_curve.png') }}" alt="ROC Curve" width="250">
+            </div>
+        </div>
+    </div>
 </body>
 </html>
