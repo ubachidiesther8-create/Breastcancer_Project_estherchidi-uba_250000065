@@ -3,8 +3,7 @@ from flask import Flask, render_template, request
 import numpy as np
 import joblib
 import tensorflow as tf
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # suppress TF info/warnings
-app = Flask(__name__)
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2' 
 MODEL_PATH = "model/breast_cancer_nn_model.keras"
 SCALER_PATH = "scaler.save"
 model = tf.keras.models.load_model(MODEL_PATH)
