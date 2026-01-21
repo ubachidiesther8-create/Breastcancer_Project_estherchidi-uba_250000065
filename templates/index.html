@@ -22,9 +22,6 @@
                     <h2>Prediction: {{ result }}</h2>
                     <h3>Probability: {{ probability }}</h3>
                 {% endif %}
-                <img src="{{ url_for('static', filename='images/class_imbalance.png') }}" alt="Class Imbalance" width="250">
-                <img src="{{ url_for('static', filename='images/confusion_matrix.png') }}" alt="Confusion Matrix" width="250">
-                <img src="{{ url_for('static', filename='images/roc_curve.png') }}" alt="ROC Curve" width="250">
             </div>
         </div>
     </div>

@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import joblib
 import pandas as pd
 app = Flask(__name__)
-MODEL_PATH = "model/breast_cancer_lr.joblib"
+MODEL_PATH = "model/breast_cancer_model.pkl"
 FEATURES_PATH = "model/breast_cancer_features.joblib"
 model = joblib.load(MODEL_PATH)
 feature_names = joblib.load(FEATURES_PATH)
